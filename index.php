@@ -10,4 +10,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_message .= "Email: $email\n\n";
     $email_message .= "Message:\n$message";
     $mailSent = mail($to, $subject, $message);
+
+    $success = mail($to, $subject, $email_message);
+
+    if ($success) {
+        echo "Email successfully sent!";
+    } else {
+        echo "Problem with sending message!";
+    }
+} else {
+    header("Location: index.html");
+    exit();
 }
+?>
